@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source="">
+	<!-- 服务范围  -->
+	<sqlGroup name="cs_service_area">
+		<!-- 自动分配仓库：匹配服务范围 -->
+		<sql id="matchWarehouseServiceArea" 
+			value="SELECT
+						b.*
+					FROM
+						cs_service_area_block b
+					LEFT JOIN cs_service_area a ON b.service_area_code = a.service_area_code
+					LEFT JOIN cs_warehouse w ON w.service_area_code = a.service_area_code
+					WHERE
+						1 = 1
+					" count="select count(1)">
+			<if value="AND w.warehouse_code = ${'warehouse_code'}"/>
+			<if value="AND ${'destination'} LIKE CONCAT(
+						IFNULL(b.province_code, ''),
+						IFNULL(b.city_code, ''),
+						IFNULL(b.county_code, ''),
+						'%'
+					)"/>
+			
+		</sql>
+		
+	</sqlGroup>
+</sqlRoot>

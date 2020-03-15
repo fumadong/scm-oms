@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source="">
+	<!-- 电子围栏  -->
+	<sqlGroup name="location.csElectronicFence">
+		<!-- 查询 -->
+		<sql id="get" value="select * from cs_electronic_fence where 1=1 " count="select count(1)">
+			<if test="#ids != null and #ids != ''" value="and id in (${ids})"/> <!-- and id in (1,2,3) -->
+			<if test="#id_not != null and #id_not != ''" value="and id != ${'id_not'}"/>
+			<if test="#name != null and #name != ''" value="and name = ${'name'}"/>
+			<if test="#name_like != null and #name_like != ''" value="and name like ${'%name_like%'}"/>
+			<if test="#province_code != null and #province_code != ''" value="and province_code = ${'province_code'}"/>
+			<if test="#city_code != null and #city_code != ''" value="and city_code = ${'city_code'}"/>
+			<if test="#county_code != null and #county_code != ''" value="and county_code = ${'county_code'}"/>
+			<if test="#address != null and #address != ''" value="and address = ${'address'}"/>
+			<if test="#address_like != null and #address_like != ''" value="and address like ${'%address_like%'}"/>
+			<if test="#status != null and #status != ''" value="and status = ${'status'}"/>
+			<if test="#exist_xy != null and #exist_xy != ''" value="and longitude is not null and latitude is not null" />
+			<if test="#not_exist_xy != null and #not_exist_xy != ''" value="and longitude is null "/>
+			<if test="#full_address != null and #full_address != ''" value="and full_address = ${'full_address'}"/>
+			<if test="#full_address_s != null and #full_address_s != ''" value="and full_address in (${full_address_s})"/>
+			<if value="order by modify_time desc"></if>
+		</sql>
+		<!-- 更新经纬度信息 -->
+		<sql id="updateXyById" value="update cs_electronic_fence 
+									 	 set longitude = #{longitude}, latitude = #{latitude}, modifier = #{modifier}, modify_time = now(), rec_ver = rec_ver + 1 
+									   where id = #{id}">
+		</sql>
+	</sqlGroup>
+</sqlRoot>

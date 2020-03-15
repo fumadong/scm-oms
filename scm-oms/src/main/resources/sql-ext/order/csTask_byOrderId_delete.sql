@@ -1,0 +1,1 @@
+delete from cs_order_task where order_id in (:order_ids)

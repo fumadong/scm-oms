@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.chinaservices:nebula-sqlinxml:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/nebula-sqlinxml/1.0-SNAPSHOT/nebula-sqlinxml-1.0-20171202.151910-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/nebula-sqlinxml/1.0-SNAPSHOT/nebula-sqlinxml-1.0-20171202.151910-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/nebula-sqlinxml/1.0-SNAPSHOT/nebula-sqlinxml-1.0-20171202.151910-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

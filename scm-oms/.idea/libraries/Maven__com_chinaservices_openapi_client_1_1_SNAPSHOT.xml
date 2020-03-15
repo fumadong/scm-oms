@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.chinaservices:openapi-client:1.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/openapi-client/1.1-SNAPSHOT/openapi-client-1.1-20171215.084751-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/openapi-client/1.1-SNAPSHOT/openapi-client-1.1-20171215.084751-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/openapi-client/1.1-SNAPSHOT/openapi-client-1.1-20171215.084751-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source=""> <!--数据源名称，只有一个数据源，默认为空-->
+    <sqlGroup name="cust.riskPoint"> <!-- name 唯一 -->
+        <!-- 分页查询 -->
+        <sql id="getPage" value="select * from cs_risk_point where 1=1 " count="select count(1)">
+            <if test="#measuredNo!=null and #measuredNo!=''" value="and measured_no like ${'%measuredNo%'}"/>
+            <if value="order by create_time desc"></if>
+        </sql>
+    </sqlGroup>
+</sqlRoot>

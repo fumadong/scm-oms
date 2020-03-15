@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source=""> <!--数据源名称，只有一个数据源，默认为空-->
+	<sqlGroup name="cust.costMeasured"> <!-- name 唯一 -->
+		<!-- 分页查询 -->
+		<sql id="getPage" value="select * from cs_cost_measured where 1=1 " count="select count(1)">
+			<if test="#measuredNo!=null and #measuredNo!=''" value="and measured_no like ${'%measuredNo%'}"/>
+			<if test="#deptName!=null and #deptName!=''" value="and dept_name=${'deptName'}"/>
+			<if test="#signType!=null and #signType!=''" value="and sign_type=${'signType'}"/>
+			<if test="#status!=null and #status!=''" value="and status=${'status'}"/>
+			<if value="order by create_time desc"></if>
+		</sql>
+	</sqlGroup>
+</sqlRoot>

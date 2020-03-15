@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <service>
+        <code>GPSCarSynJob</code>
+        <name>GPS车辆信息同步</name>
+        <maxThreadCount>1</maxThreadCount>
+        <cron>0 0 */2 * * ?</cron>
+        <className>com.chinaservices.datasyn.gps.task.GPSCarSynJob</className>
+        <status>0</status>
+    </service>
+
+    <service>
+        <code>HistoryDataSynJob</code>
+        <name>GPS历史轨迹数据同步</name>
+        <maxThreadCount>1</maxThreadCount>
+        <cron>0 0/2 * * * ?</cron>
+        <className>com.chinaservices.datasyn.gps.task.HistoryDataSynJob</className>
+        <status>0</status>
+    </service>
+</root>

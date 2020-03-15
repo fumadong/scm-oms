@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source="">
+	<!-- 订单承运商成本  -->
+	<sqlGroup name="order.csOrderCarrierCost">
+		<!-- 分页查询 -->
+		<sql id="getPage" value="select * from cs_order_carrier_cost where 1=1 " count="select count(1)">
+			<if test="#order_no != null and #order_no != ''" value="and order_no = ${'order_no'}"/>
+			<if test="#carrier_code != null and #carrier_code != ''" value="and carrier_code = ${'carrier_code'}"/>
+			<if value="order by modify_time desc"></if>
+		</sql>
+	</sqlGroup>
+</sqlRoot>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source="">
+	<!-- 运力承诺  -->
+	<sqlGroup name="csTransportCommitment">
+		<!-- 自动分配承运商：匹配运力承诺流向 -->
+		<sql id="matchFlow" 
+			value="SELECT
+					c.carrier_code,
+					c.carrier_name,
+					f.transit_time,
+					0 as plan_amount,
+					null as require_time_from,
+					null as require_time_to,
+					f.origin_province_name,
+					f.origin_city_name,
+					f.origin_county_name,
+					f.dest_province_name,
+					f.dest_city_name,
+					f.dest_county_name,
+					concat(
+						IFNULL(f.origin_province_name, ''),
+						IFNULL(f.origin_city_name, ''),
+						IFNULL(f.origin_county_name, '')
+					) as origin,
+					concat(
+						IFNULL(f.dest_province_name, ''),
+						IFNULL(f.dest_city_name, ''),
+						IFNULL(f.dest_county_name, '')
+					) as destination
+				FROM
+					cs_supplier s
+				LEFT JOIN cs_transport_commitment c ON s.supplier_code = c.carrier_code
+				LEFT JOIN cs_transport_commitment_flow f ON c.id = f.commitment_id
+				WHERE
+					1 = 1
+				AND f.commitment_id IS NOT NULL
+				AND c.`status` = 1
+				AND s.`status` = 1" count="select count(1)">
+			<if test="#origin != null and #origin != ''" value="AND ${'origin'} LIKE concat(
+						IFNULL(f.origin_province_code, ''),
+						IFNULL(f.origin_city_code, ''),
+						IFNULL(f.origin_county_code, ''),
+						'%'
+					)"/>
+			<if test="#destination != null and #destination != ''" value="AND ${'destination'} LIKE CONCAT(
+						IFNULL(f.dest_province_code, ''),
+						IFNULL(f.dest_city_code, ''),
+						IFNULL(f.dest_county_code, ''),
+						'%'
+					)"/>
+			<if value="ORDER BY origin_county_code DESC, 
+						origin_city_code DESC, 
+						dest_county_code DESC, 
+						dest_city_code DESC"></if>
+		</sql>
+		
+	</sqlGroup>
+</sqlRoot>

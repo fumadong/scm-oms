@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source=""> <!--数据源名称，只有一个数据源，默认为空-->
+	<sqlGroup name="dispatch.csDispatchFee">
+		<!-- 根据条件查询派车单费用下的总费用、总确认费用 -->
+		<sql id="getDispatchTotalCost" value="select COALESCE(SUM(total_amount), 0) as total_cost, COALESCE(SUM(confirm_amount), 0) as total_confirm_amount from cs_dispatch_fee where 1 = 1 " count="select count(1)">
+			<if test="#dispatch_no != null and #dispatch_no != ''" value="and dispatch_no = ${'dispatch_no'}"/>
+			<if test="#fee_source != null and #fee_source != ''" value="and fee_source = ${'fee_source'}"/>
+			<if test="#balance_code != null and #balance_code != ''" value="and balance_code = ${'balance_code'}"/>
+		</sql>
+	</sqlGroup>
+</sqlRoot>

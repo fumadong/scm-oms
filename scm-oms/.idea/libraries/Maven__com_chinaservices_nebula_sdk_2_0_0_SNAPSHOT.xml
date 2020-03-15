@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.chinaservices:nebula-sdk:2.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/nebula-sdk/2.0.0-SNAPSHOT/nebula-sdk-2.0.0-20171213.083232-3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/nebula-sdk/2.0.0-SNAPSHOT/nebula-sdk-2.0.0-20171213.083232-3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/nebula-sdk/2.0.0-SNAPSHOT/nebula-sdk-2.0.0-20171213.083232-3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

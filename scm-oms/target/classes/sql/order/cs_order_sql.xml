@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source="">
+	<!-- 订单分配单  -->
+	<sqlGroup name="order.csOrder">
+		<!-- 分配订单：相关数据信息查询 -->
+		<sql id="getOrderDistributionBaseInfo" 
+			value="SELECT
+						t.order_no,
+						t.customer_order_no,
+						t.require_time_from,
+						t.require_time_to,
+						t.customer_name,
+						t.shipper_province_code,
+						t.shipper_province_name,
+						t.shipper_city_code,
+						t.shipper_city_name,
+						t.shipper_county_code,
+						t.shipper_county_name,
+						t.consignee_province_code,
+						t.consignee_province_name,
+						t.consignee_city_code,
+						t.consignee_city_name,
+						t.consignee_county_code,
+						t.consignee_county_name,
+						t.remark,
+						(select group_concat(cargo_name) from cs_order_cargo C WHERE C.order_no = T.order_no) AS cargo_name,
+						(SELECT SUM(IFNULL(C.plan_amount, 0)) FROM cs_order_cargo C WHERE C.order_no = T.order_no) AS plan_amount,
+						(SELECT SUM(IFNULL(C.distribution_amount, 0)) FROM cs_order_cargo C WHERE C.order_no = T.order_no) AS distribution_amount,
+						(SELECT SUM(C.plan_amount) - SUM(IFNULL(C.distribution_amount, 0)) FROM cs_order_cargo C WHERE C.order_no = T.order_no ) AS remainder_amount
+					FROM
+						cs_order t
+				   WHERE 1 = 1" count="select count(1)">
+			<if value="and t.order_no = ${'order_no'}"/>
+		</sql>
+		<!-- 查询订单状态及其商品信息(生成分配单使用) -->
+		<sql id="getOrderStatusAndCargo" 
+			value="SELECT
+						t.STATUS as order_status,
+						c.*,
+						(c.plan_amount - IFNULL(c.distribution_amount, 0)) as remainder_amount
+					FROM
+						cs_order t
+					LEFT JOIN cs_order_cargo c ON t.order_no = c.order_no
+				   WHERE 1 = 1" count="select count(1)">
+			<if value="and t.order_no = ${'order_no'}"/>
+		</sql>
+	</sqlGroup>
+</sqlRoot>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.chinaservices:comapp-admin:2.8.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/comapp-admin/2.8.0-SNAPSHOT/comapp-admin-2.8.0-20171212.101004-3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/comapp-admin/2.8.0-SNAPSHOT/comapp-admin-2.8.0-20171212.101004-3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/chinaservices/comapp-admin/2.8.0-SNAPSHOT/comapp-admin-2.8.0-20171212.101004-3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

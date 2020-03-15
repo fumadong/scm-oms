@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source=""> <!--数据源名称，只有一个数据源，默认为空-->
+    <sqlGroup name="cust.contractFee"> <!-- name 唯一 -->
+        <!-- 分页查询 -->
+        <sql id="getPage" value="select * from cs_customer_contract_fee where 1=1 " count="select count(1)">
+            <if value="and customer_contract_position_id=#{customerContractPositionId}"></if>
+            <if test="#contractFeeType!=null and #contractFeeType!=''" value="and contract_fee_type=#{contractFeeType}"></if>
+            <if value="order by create_time desc"></if>
+        </sql>
+
+        <sql id="getPageForBargaining" value="select t.*,t3.contract_code,t3.contract_name,t2.from_province,t2.from_city,t2.from_county,t2.to_province,t2.to_city,t2.to_county,t2.cargo_name
+                                from cs_customer_contract_fee t
+                                left join cs_customer_contract_position t2 on t.customer_contract_position_id=t2.id
+                                left join cs_customer_contract t3 on t2.contract_code=t3.contract_code
+                                where 1=1 and t3.id is not null " count="select count(1)">
+            <if value="and t.contract_fee_type='2'"></if>
+            <if test="#contract_code!=null and #contract_code!=''" value=" and t3.contract_code=${'contract_code'}"></if>
+            <if test="#contract_name!=null and #contract_name!=''" value=" and t3.contract_name=${'contract_name'}"></if>
+            <if test="#fee_name!=null and #fee_name!=''" value=" and t.fee_name=${'fee_name'}"></if>
+            <if test="#status!=null and #status!=''" value=" and t.status=${'status'}"></if>
+            <if test="#from_province_code!=null and #from_province_code!=''" value=" and t2.from_province_code=${'from_province_code'}"></if>
+            <if test="#from_city_code!=null and #from_city_code!=''" value=" and t2.from_city_code=${'from_city_code'}"></if>
+            <if test="#from_county_code!=null and #from_county_code!=''" value=" and t2.from_county_code=${'from_county_code'}"></if>
+            <if test="#to_province_code!=null and #to_province_code!=''" value=" and t2.to_province_code=${'to_province_code'}"></if>
+            <if test="#to_city_code!=null and #to_city_code!=''" value=" and t2.to_city_code=${'to_city_code'}"></if>
+            <if test="#to_county_code!=null and #to_county_code!=''" value=" and t2.to_county_code=${'to_county_code'}"></if>
+            <if value="order by t.modify_time desc"></if>
+        </sql>
+    </sqlGroup>
+</sqlRoot>

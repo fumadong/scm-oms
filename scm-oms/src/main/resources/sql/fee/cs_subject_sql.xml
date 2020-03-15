@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source=""> <!--数据源名称，只有一个数据源，默认为空-->
+	<sqlGroup name="fee.csSubject"> <!-- name 唯一 -->
+		<!-- 分页查询 -->
+		<sql id="getPage" value="select * from cs_subject t where 1=1 " count="select count(1)">
+			<if test="#subjectCode!=null and #subjectCode!=''" value="and t.subject_code like ${'%subjectCode%'}"/>
+			<if test="#subjectName!=null and #subjectName!=''" value="and t.subject_name like ${'%subjectName%'}"/>
+			<if value="order by t.create_time desc"></if>
+		</sql>
+	</sqlGroup>
+</sqlRoot>

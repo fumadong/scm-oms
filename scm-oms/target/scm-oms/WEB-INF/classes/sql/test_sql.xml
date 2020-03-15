@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source=""> <!--数据源名称，因为项目现在只有一个数据源，默认为空-->
+	<sqlGroup name="cs.demo"> <!-- name 唯一 -->
+		<!-- 分页查询 -->
+		<sql id="getPage" value="select * from demo where 1=1 " count="select count(1)">
+			<if value="and id = #{id}"/> <!-- and id=? -->
+			<if value="and id = #{'id'}"/> <!-- and id='A01' -->
+			<if test="" value="and id like ${'%id%'}"/> <!-- and id like '%A01%' -->
+			<if test="#id>1" value="and name like ${'name%'}"/> <!-- and name like 'A01%' -->
+			<if test="#id==1" value="and id in (${id})"/> <!-- and id in (1,2,3) -->
+			<choose>
+			    <when test="#title!=null" value="and title like ${'title%'}"/>
+			    <when test="#author!=null and #author.name" value="and name like #{author.name}"/>
+			    <otherwise value="and name=#{name}"/>
+			</choose>
+			<if value="order by create_time desc"></if> <!--始终启用-->
+		</sql>
+
+		<sql id="delete" value="delete from demo where id=#{id}"></sql>
+	</sqlGroup>
+</sqlRoot>

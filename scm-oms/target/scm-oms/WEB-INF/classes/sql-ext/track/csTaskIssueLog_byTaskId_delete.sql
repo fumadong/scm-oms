@@ -1,0 +1,1 @@
+delete from cs_task_issue_log where order_task_id in (:task_ids)

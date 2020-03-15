@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source="">
+	<!-- 订单商品  -->
+	<sqlGroup name="order.csOrderCargo">
+		<!-- 更新订单商品分配量 -->
+		<sql id="updateOrderCargoDistributionAmount" value="
+			 UPDATE cs_order_cargo t
+				SET t.distribution_amount = (
+						SELECT
+							SUM(c.plan_amount)
+						FROM
+							cs_distribution_cargo c
+						WHERE
+							c.order_no = #{order_no}
+						AND c.cargo_code = t.cargo_code
+					),
+					modifier = #{modifier},
+					modify_time = now()
+			  WHERE t.order_no = #{order_no} ">
+		</sql>
+	</sqlGroup>
+</sqlRoot>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="scm-oms:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>scm-oms</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="scm-oms.war">
+      <element id="artifact" artifact-name="scm-oms:war exploded" />
+    </root>
+  </artifact>
+</component>

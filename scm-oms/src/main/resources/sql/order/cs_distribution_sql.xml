@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source="">
+	<!-- 订单分配单  -->
+	<sqlGroup name="order.csDistribution">
+		<!-- 查询订单下各承运商分配量-->
+		<sql id="getCarrireDistributionInfo" value="SELECT a.order_no,
+									SUM(a.plan_amount) AS plan_amount,
+									a.carrier_code,
+									a.carrier_name
+							   FROM (SELECT t.order_no,
+											t.carrier_code,
+											t.carrier_name,
+											( SELECT SUM(C.plan_amount) 
+												FROM cs_distribution_cargo c
+											   WHERE c.distribution_no = t.distribution_no
+											) AS plan_amount
+										FROM
+											cs_distribution t
+										WHERE " count="select count(1)">
+			<if value="t.order_no = ${'order_no'}"/>
+			<if value=") a GROUP BY a.carrier_code ">
+			</if>
+		</sql>
+	</sqlGroup>
+</sqlRoot>

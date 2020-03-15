@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source=""> <!--数据源名称，只有一个数据源，默认为空-->
+    <sqlGroup name="cust.contractPosition"> <!-- name 唯一 -->
+        <!-- 分页查询 -->
+        <sql id="getPage" value="select * from cs_customer_contract_position where " count="select count(1)">
+            <if test="#contractCode==null or #contractCode==''" value="1!=1"></if>
+            <if test="#contractCode!=null and #contractCode!=''" value="contract_code=${'contractCode'}"></if>
+            <if test="#from_province_code!=null and #from_province_code!=''" value=" and from_province_code=${'from_province_code'}"></if>
+            <if test="#from_city_code!=null and #from_city_code!=''" value=" and from_city_code=${'from_city_code'}"></if>
+            <if test="#from_county_code!=null and #from_county_code!=''" value=" and from_county_code=${'from_county_code'}"></if>
+            <if test="#to_province_code!=null and #to_province_code!=''" value=" and to_province_code=${'to_province_code'}"></if>
+            <if test="#to_city_code!=null and #to_city_code!=''" value=" and to_city_code=${'to_city_code'}"></if>
+            <if test="#to_county_code!=null and #to_county_code!=''" value=" and to_county_code=${'to_county_code'}"></if>
+            <if value="order by create_time desc"></if>
+        </sql>
+    </sqlGroup>
+</sqlRoot>

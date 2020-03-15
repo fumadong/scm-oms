@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqlRoot source="">
+	<!-- 订单分配单商品  -->
+	<sqlGroup name="order.csDistributionCargo">
+		<!-- 根据分配单号删除分配单商品 -->
+		<sql id="deleteByDistributionNo" value="delete from cs_distribution_cargo where distribution_no=#{distribution_no}"></sql>
+	</sqlGroup>
+</sqlRoot>
